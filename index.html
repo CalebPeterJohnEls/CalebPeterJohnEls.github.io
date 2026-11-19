@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caleb Els – Application Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef0fb;--panel:#fff;--ink:#1b1840;--muted:#55527a;--line:#c5c2e6;--accent:#5b3df5;--chip:#e2e0f6;--px:"Press Start 2P","Courier New",monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12102b;--panel:#1c1942;--ink:#ecebff;--muted:#a9a6d6;--line:#34306b;--accent:#a592ff;--chip:#2a2760;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12102b;--panel:#1c1942;--ink:#ecebff;--muted:#a9a6d6;--line:#34306b;--accent:#a592ff;--chip:#2a2760;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible,canvas:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.hero{background:#0f0d26;color:#ecebff;padding:2.5rem 1.25rem 1.5rem}
+.in{max-width:56rem;margin:0 auto}
+.hi{margin:0 0 .75rem;color:#b9b3ff}
+h1{font:clamp(1.5rem,6.5vw,3rem)/1.3 var(--px);margin:0 0 1rem}
+.type{font:clamp(.8rem,2.6vw,1.1rem)/1.6 var(--px);color:#38f5ff;margin:0 0 1rem;min-height:1.8em}
+.cur{display:inline-block;width:.6em;height:1em;background:#38f5ff;vertical-align:-.12em;margin-left:.15em;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+.status{display:inline-block;background:#2a2760;padding:.3rem .8rem;font-size:.9rem;margin:0 0 1.25rem}
+.links{display:flex;flex-wrap:wrap;gap:.75rem;margin:0 0 1.5rem}
+.btn{font:inherit;font-weight:700;display:inline-block;padding:.6rem 1.1rem;border:3px solid currentColor;box-shadow:4px 4px 0 currentColor;text-decoration:none;min-height:44px;cursor:pointer;background:transparent;color:inherit}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 currentColor}
+.hero .btn.p{background:#38f5ff;color:#0f0d26;border-color:#38f5ff;box-shadow:4px 4px 0 #ff3ea5}
+.hero .btn.p:active{box-shadow:1px 1px 0 #ff3ea5}
+#scene{display:block;width:100%;max-width:56rem;margin:0 auto;height:auto;image-rendering:pixelated;border:4px solid #8f7bff;cursor:pointer;touch-action:manipulation}
+.hud{max-width:56rem;margin:.75rem auto 0;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font:.65rem/1.8 var(--px);color:#b9b3ff}
+.hud b{color:#38f5ff}
+section{max-width:56rem;margin:0 auto;padding:3rem 1.25rem 0}
+h2{font:1rem/1.5 var(--px);margin:0 0 .5rem}
+.sub{color:var(--muted);margin:0 0 1.25rem;max-width:38rem}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.25rem}
+.filters button{font:inherit;padding:.4rem .9rem;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;min-height:40px}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(11.5rem,1fr));gap:1.2rem}
+.cart{font:inherit;color:var(--ink);background:var(--panel);border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:.8rem;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:.5rem}
+.cart:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.ic{width:48px;height:48px;image-rendering:pixelated;background:#1c1942;border:2px solid var(--ink)}
+.nm{font-weight:700;line-height:1.3}
+.mt{font-size:.82rem;color:var(--muted)}
+dialog{border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);background:var(--panel);color:var(--ink);width:min(34rem,calc(100vw - 2rem));padding:1.25rem}
+dialog::backdrop{background:rgba(10,8,30,.75)}
+dialog h3{font:.85rem/1.6 var(--px);margin:0 0 .25rem;padding-right:2rem}
+dialog .mt{margin:0 0 .75rem}
+#dd{min-height:4.5rem;margin:0 0 .75rem}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1rem;padding:0;list-style:none}
+.tags li{background:var(--chip);padding:.1rem .55rem;font-size:.85rem}
+.x{position:absolute;top:.6rem;right:.6rem;font:inherit;width:36px;height:36px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.sk{display:grid;gap:.9rem;max-width:38rem}
+.sk div{display:grid;grid-template-columns:8.5rem 1fr;gap:.2rem .8rem;align-items:center}
+.sk small{grid-column:2;color:var(--muted)}
+.bar{height:16px;background:var(--chip);border:2px solid var(--ink)}
+.fill{height:100%;width:0;background:repeating-linear-gradient(90deg,var(--accent) 0 8px,transparent 8px 10px);transition:width 1.1s steps(10)}
+.q{list-style:none;margin:0;padding:0 0 0 1.5rem;border-left:4px solid var(--line);max-width:40rem}
+.q li{position:relative;padding:0 0 1.5rem}
+.q li::before{content:"";position:absolute;left:calc(-1.5rem - 8px);top:.3rem;width:12px;height:12px;background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+.yr{font:.7rem/1.6 var(--px);color:var(--accent);display:block;margin-bottom:.2rem}
+.q b{display:block}
+.q span.d{color:var(--muted)}
+footer{max-width:56rem;margin:3rem auto 0;padding:1.5rem 1.25rem 3rem;border-top:4px solid var(--line);color:var(--muted)}
+footer .links .btn{color:var(--ink)}
+@media (max-width:30rem){.sk div{grid-template-columns:1fr}.sk small{grid-column:1}}
+@media (prefers-reduced-motion:reduce){.cur{animation:none}.fill{transition:none}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="in">
+    <p class="hi">Hi, I’m</p>
+    <h1>Caleb Els</h1>
+    <p class="type"><span id="tw"></span><span class="cur" aria-hidden="true"></span></p>
+    <p class="status">BSc Computer and Information Sciences: all modules completed, final results pending</p>
+    <p class="links">
+      <a class="btn p" href="#projects">Choose a project</a>
+      <a class="btn" href="https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris">GitHub</a>
+    </p>
+  </div>
+  <canvas id="scene" width="320" height="144" tabindex="0" role="img" aria-label="Pixel cyberpunk city at dusk with a hooded figure with glowing cyan eyes, outlined in neon, running along the street. Click or press space to make them jump and collect coins."></canvas>
+  <p class="hud"><span>Click the scene to jump and grab coins</span><span>Coins <b id="coins">0</b></span><span>Projects <b id="pc">0</b></span><span>Studying since <b>2023</b></span></p>
+</header>
+
+<section id="projects">
+  <h2>Select a project</h2>
+  <p class="sub">Every cartridge is a project from my degree. Pick one to see what it does and open the code.</p>
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button type="button" data-f="all" aria-pressed="true">All</button>
+    <button type="button" data-f="mobile" aria-pressed="false">Mobile</button>
+    <button type="button" data-f="web" aria-pressed="false">Web and APIs</button>
+    <button type="button" data-f="other" aria-pressed="false">Console and design</button>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="sub" style="margin-top:1.25rem">The repo has the full source for each of these, along with my other coursework.</p>
+</section>
+
+<dialog id="dlg" aria-labelledby="dt">
+  <button class="x" id="dx" aria-label="Close">X</button>
+  <h3 id="dt"></h3>
+  <p class="mt" id="dm"></p>
+  <p id="dd"></p>
+  <ul class="tags" id="dg"></ul>
+  <p id="dl"></p>
+</dialog>
+
+<section>
+  <h2>Skills used most</h2>
+  <p class="sub">Counted from the projects above: each bar shows how many of them use that tool.</p>
+  <div class="sk" id="sk"></div>
+</section>
+
+<section>
+  <h2>Quest log</h2>
+  <ol class="q">
+    <li><span class="yr">2022</span><b>Gill College</b><span class="d">National Senior Certificate. Third in my grade and an IMAGINE group leader.</span></li>
+    <li><span class="yr">2023</span><b>Higher Certificate in Mobile Applications and Web Development</b><span class="d">Came second in the year and led my Work Integrated Learning group.</span></li>
+    <li><span class="yr">2024</span><b>BSc starts, and I become a tutor</b><span class="d">Tutor and lecturer assistant for Higher Certificate students, with one-on-one catch-up sessions.</span></li>
+    <li><span class="yr">2025</span><b>Mentoring and writing support</b><span class="d">GRIT3sixT mentor for first-years until May 2026. Writing Consultant for the School of IT, helping students with referencing, structure and ethical writing.</span></li>
+    <li><span class="yr">2026</span><b>Career Services, job shadowing and the final year</b><span class="d">Volunteering in Career Services since January, six hours of job shadowing at Wirk, top 10 in my degree for the 5th semester, and all modules completed.</span></li>
+  </ol>
+</section>
+
+<footer>
+  <h2>Say hello</h2>
+  <p>Gqeberha, South Africa</p>
+  <p class="links">
+    <a class="btn" href="mailto:cpj.els2003@gmail.com">Email me</a>
+    <button class="btn" type="button" id="cp">Copy email</button>
+    <a class="btn" href="https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris">GitHub</a>
+  </p>
+</footer>
+
+<script>
+var B="https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris/tree/main/";
+var RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function rnd(s){s=Math.sin(s*127.1)*43758.5453;return s-Math.floor(s)}
+var P=[
+{n:"Fun in Action (client WIL project)",m:"Year 3 · Team lead",c:["mobile","web"],t:["Kotlin","Jetpack Compose","ASP.NET MVC"],d:"Built for an outside client, SA Hockey. A web app for client management and payment tracking, plus an Android app with a body-tracking system that helps new players learn hockey stances. I led the group.",l:B+"INSY%203E%20%28WIL%29%20-%20Fun%20In%20Action"},
+{n:"GeekShelf",m:"Year 3 · Android",c:["mobile"],t:["Kotlin","Jetpack Compose","Firebase"],d:"An Android app for keeping track of the games, comics, manga and anime you own and want.",l:B+"PROG%203D%20-%20GeekShelf%20Andriod%20App"},
+{n:"HustleHub+",m:"Year 3 · Web security",c:["web"],t:["JavaScript","MongoDB","JWT","APIs"],d:"A freelance marketplace web app built with security first, using token-based authentication and a Node and MongoDB back end.",l:B+"INSY%203D-%20%20HustleHub%20Security%20Based%20Web%20App"},
+{n:"Smart-X",m:"Year 3 · MVC and API",c:["web"],t:["C#","ASP.NET MVC","Web API"],d:"An IoT-style system made of a C# API and an MVC client that talk to each other.",l:B+"PROG%203B-%20Smart%20X%20MVC%20%2B%20API"},
+{n:"Global Logistics Management System",m:"2026 POE · MVC",c:["web"],t:["C#","ASP.NET MVC","SQL"],d:"A logistics management website built with ASP.NET MVC and a SQL database.",l:"https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris/tree/main/prog7311-2026-poe%20Global%20Logistics%20Management%20System%20MVC/prog7311-2026-poe-CalebPeterJohnEls"},
+{n:"BetterBudget",m:"2026 · Android group project",c:["mobile"],t:["Kotlin","Firebase"],d:"A group Android budgeting app built with Kotlin and Firebase.",l:"https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris/tree/main/Prog7313-2026%20Android%20Group%20Project%20-%20BetterBudget/vcnmb-prog7313-2026-part-2-3-betterbudget"},
+{n:"Contract Monthly Claim System",m:"2025 POE · MVC",c:["web"],t:["C#","ASP.NET MVC","SQL"],d:"An MVC website for submitting and managing contract lecturers\u2019 monthly claims.",l:"https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris/tree/main/prog6212-2025-poe%20MVC%20Website%20-%20Contract%20Monthly%20Claim%20System/vcnmb-prog6212-2025-poe-CalebPeterJohnEls"},
+{n:"Cyber-Security Chatbot",m:"2025 POE · Console",c:["other"],t:["C#"],d:"A C# console chatbot that answers cyber-security questions.",l:"https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris/tree/main/Prog6221-2025-poe%20C%23%20console%20Cyber-Security%20chatbot/vcnmb-prog6221-2025-poe-CalebPeterJohnEls"},
+{n:"Midland Saga Game",m:"2024 · Year 1",c:["other"],t:["Java"],d:"A Java game built for my first-year programming assignment.",l:B+"Prog6112%20Java%20Assignment%20q2%20-%20Midland%20Saga%20Game"},
+{n:"Student Registration System",m:"2024 · Year 1",c:["other"],t:["Java"],d:"A Java student registration program from my first-year programming assignment.",l:"https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris/tree/main/Prog6112%20Java%20Assignment%20q1-%20Student%20Registration%20System"},
+{n:"Kanban Board",m:"2024 POE · Java",c:["other"],t:["Java"],d:"A Kanban board application written in Java for my first-year programming POE.",l:B+"Prog5121-Java-2024-poe%20-%20Kanban%20Board"},
+{n:"Book Worm",m:"Higher Certificate",c:["mobile"],t:["JavaScript","React Native"],d:"Book Worm is a cross-platform book collecting app built with React Native.",l:"https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris/tree/main/MAST5112%20-%20React%20Native-%20Book%20Collecting%20App%28%20Book%20Worm%29/MAST5112_POE_CalebEls_ST1030616-main"},
+{n:"Calculator Android App",m:"Higher Certificate",c:["mobile"],t:["Kotlin"],d:"My first Android project, a calculator built in Kotlin.",l:"https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris/tree/main/imad5112%20-%20Calculator%20Android%20App/vcnmb-imad5112-2023-poe-CalebEls-master"},
+{n:"Forge Tech website",m:"2023 · Web development",c:["web"],t:["HTML","CSS","JavaScript"],d:"A website project for Forge Tech, built with HTML, CSS and JavaScript.",l:"https://github.com/CalebPeterJohnEls/Projects-Done-At-Emeris/tree/main/wede5020%20Website%20Project%20-%20Forge%20Tech%202023/2023-wede5020-task-2-CalebEls-master"},
+{n:"Empowering the Nation website",m:"2023 · WIL group project",c:["web"],t:["HTML","CSS","JavaScript"],d:"A website for Empowering the Nation, a Johannesburg organisation founded in 2018 that runs learnerships and short skills courses for domestic workers and gardeners. Built as a group project for Work Integrated Learning.",l:B+"wil-website-%20Training%20Program-%20Group%20Project%20-%202023/wil-website-%20Group%20Project"},
+{n:"GoalNote wireframes",m:"Design",c:["other"],t:["Figma"],d:"Wireframes for GoalNote, a goal-tracking app concept, designed in Figma.",l:B+"Figma%20Wireframes"}
+];
+document.getElementById("pc").textContent=P.length;
+
+/* typewriter */
+(function(){
+  var el=document.getElementById("tw"),L=["Android apps.","Web apps.","APIs and cloud."],i=0,j=0,del=false;
+  if(RM){el.textContent="Android apps, web apps and APIs.";return}
+  (function tick(){
+    var w=L[i];j+=del?-1:1;el.textContent=w.slice(0,j);
+    var d=del?35:75;
+    if(!del&&j===w.length){del=true;d=1400}
+    else if(del&&j===0){del=false;i=(i+1)%L.length;d=300}
+    setTimeout(tick,d);
+  })();
+})();
+
+/* pixel scene */
+(function(){
+  var c=document.getElementById("scene"),x=c.getContext("2d"),W=160,H=72,G=H-8,t=0,got=0,run=true,i,px=0;
+  var cn=document.getElementById("coins");
+  x.imageSmoothingEnabled=false;
+  var stars=[];for(i=0;i<45;i++)stars.push([rnd(i)*W|0,rnd(i+99)*38|0,rnd(i+7)*6]);
+  var bl=[];while(px<W){var w=10+(rnd(px+3)*12|0),h=14+(rnd(px+5)*26|0);bl.push([px,w,h]);px+=w+1}
+  var bc=["#2a2660","#332e75","#241f55"];
+  var tall=0;bl.forEach(function(b,n){if(b[2]>bl[tall][2])tall=n});
+  var coins=[[40,G-24,0],[90,G-32,0],[130,G-22,0]];
+  var ch={x:10,y:G,vy:0},tr=[];
+  var FW=30,FH=38,FEET=36,CXW=8,HW=14,SH=new Image(),ready=false;
+  SH.onload=function(){ready=true;if(RM)draw()};
+  SH.src="data:image/png;base64,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";
+  function jump(){if(ch.y>=G){ch.vy=-2.7}if(RM&&!run){run=true;var n=0;(function f(){draw();if(++n<90)requestAnimationFrame(f);else run=false})()}}
+  function draw(){
+    var k,m;
+    x.setTransform(2,0,0,2,0,0);
+    ["#120f33","#1b1450","#2a1766","#45196f","#7a1f7a","#c2386f"].forEach(function(col,n){x.fillStyle=col;x.fillRect(0,n*12,W,12)});
+    stars.forEach(function(s){x.fillStyle=Math.sin(t/18+s[2])>-.3?"#fff":"#6a64a8";x.fillRect(s[0],s[1],1,1)});
+    for(m=-14;m<=14;m++){if(m>0&&(m%5)<(m/5|0)+1)continue;var hf=Math.sqrt(196-m*m)|0;x.fillStyle=["#ffd36b","#ff9f5a","#ff3ea5"][Math.min(2,(m+14)/10|0)];x.fillRect(122-hf,36+m,hf*2,1)}
+    for(k=0;k<W;k+=9){var fh=8+(rnd(k+50)*22|0);x.fillStyle="#2c1664";x.fillRect(k,G-fh,9,fh)}
+    bl.forEach(function(b,n){
+      x.fillStyle=bc[n%3];x.fillRect(b[0],G-b[2],b[1],b[2]);
+      for(var wx=b[0]+2;wx<b[0]+b[1]-3;wx+=4)for(var wy=G-b[2]+3;wy<G-4;wy+=5){
+        var lit=rnd(wx*7+wy*13+(rnd(wx+wy)>.85?(t/200|0):0))>.45;
+        x.fillStyle=lit?["#ffd36b","#38f5ff","#ff3ea5"][rnd(wx*3+wy)*3|0]:"#1a1640";x.fillRect(wx,wy,2,2)}
+    });
+    if((t/30|0)%2){var tb=bl[tall];x.fillStyle="#ff3333";x.fillRect(tb[0]+(tb[1]>>1),G-tb[2]-2,1,1)}
+    var cx=((t*.35)%(W+24)-12)|0;x.fillStyle="#38f5ff";x.fillRect(cx,16,6,2);x.fillStyle="#ff3ea5";x.fillRect(cx-1,16,1,2);
+    x.fillStyle="#2b2670";x.fillRect(0,G,W,8);x.fillStyle="#ff3ea5";x.fillRect(0,G,W,1);
+    x.fillStyle="#3a33a0";for(k=0;k<W;k+=8)x.fillRect(k,G+4,4,1);
+    coins.forEach(function(q,n){
+      if(q[2]>0){q[2]--;return}
+      var by=q[1]+(Math.sin(t/12+n)*1.5|0);
+      x.fillStyle="#ffd36b";x.fillRect(q[0],by,4,4);x.fillStyle="#fff2b0";x.fillRect(q[0]+1,by+1,1,2);
+      if(Math.abs(ch.x+CXW-q[0]-2)<8&&by+2>ch.y-HW&&by+2<ch.y+2){q[2]=300;got++;cn.textContent=got}
+    });
+    ch.x+=.45;if(ch.x>W+4)ch.x=-14;
+    ch.vy+=.12;ch.y+=ch.vy;if(ch.y>=G){ch.y=G;ch.vy=0}
+    if(t%3===0)tr.push([ch.x+CXW-5,ch.y-3-(rnd(t)*12|0),24]);
+    tr=tr.filter(function(q){return q[2]>0});
+    tr.forEach(function(q,n){q[2]--;x.globalAlpha=q[2]/30;x.fillStyle=n%2?"#ff3ea5":"#38f5ff";x.fillRect(q[0]|0,q[1]|0,1,1)});
+    x.globalAlpha=1;
+    if(ch.y>=G){x.globalAlpha=.5;x.fillStyle="#38f5ff";x.fillRect(ch.x+CXW-5|0,G,10,1);x.globalAlpha=1}
+    x.setTransform(1,0,0,1,0,0);
+    if(ready){
+      var fr=ch.y<G?6+(ch.vy<-1.5?0:ch.vy<0?1:ch.vy<1.5?2:3):(t/6|0)%6;
+      x.drawImage(SH,fr*FW,0,FW,FH,Math.round(ch.x*2),Math.round(ch.y*2)-FEET,FW,FH);
+    }
+    t++;
+  }
+  function loop(){if(run){draw();requestAnimationFrame(loop)}}
+  c.addEventListener("click",jump);
+  c.addEventListener("keydown",function(e){if(e.key===" "||e.key==="Enter"){e.preventDefault();jump()}});
+  if(RM){run=false;draw()}else{
+    new IntersectionObserver(function(en){var v=en[0].isIntersecting;if(v&&!run){run=true;loop()}else if(!v)run=false}).observe(c);
+    loop();
+  }
+})();
+
+/* cartridges */
+var grid=document.getElementById("grid"),dlg=document.getElementById("dlg"),cur="all",tm;
+function icon(p,i){
+  var cv=document.createElement("canvas");cv.width=8;cv.height=7;cv.className="ic";cv.setAttribute("aria-hidden","true");
+  var g=cv.getContext("2d"),col=p.c[0]==="mobile"?"#ff7aa8":p.c[0]==="web"?"#6fd3ff":"#ffd36b";
+  for(var r=0;r<7;r++)for(var k=0;k<4;k++)if(rnd(i*31+r*7+k*3+1)>.42){g.fillStyle=col;g.fillRect(k,r,1,1);g.fillRect(7-k,r,1,1)}
+  return cv;
+}
+function show(p){
+  clearTimeout(tm);
+  document.getElementById("dt").textContent=p.n;
+  document.getElementById("dm").textContent=p.m;
+  document.getElementById("dg").innerHTML=p.t.map(function(s){return "<li>"+s+"</li>"}).join("");
+  document.getElementById("dl").innerHTML=p.l?'<a class="btn" style="color:var(--accent)" href="'+p.l+'">Find it on GitHub</a>':'<em style="color:var(--muted)">Code is being added to GitHub.</em>';
+  var dd=document.getElementById("dd"),j=0;dd.textContent="";
+  if(RM)dd.textContent=p.d;else(function ty(){dd.textContent=p.d.slice(0,++j);if(j<p.d.length)tm=setTimeout(ty,14)})();
+  dlg.showModal();
+}
+function render(){
+  grid.innerHTML="";
+  P.forEach(function(p,i){
+    if(cur!=="all"&&p.c.indexOf(cur)<0)return;
+    var b=document.createElement("button");b.type="button";b.className="cart";
+    b.appendChild(icon(p,i));
+    b.insertAdjacentHTML("beforeend",'<span class="nm">'+p.n+'</span><span class="mt">'+p.m+'</span>');
+    b.addEventListener("click",function(){show(p)});
+    grid.appendChild(b);
+  });
+}
+document.querySelectorAll(".filters button").forEach(function(b){
+  b.addEventListener("click",function(){
+    cur=b.getAttribute("data-f");
+    document.querySelectorAll(".filters button").forEach(function(o){o.setAttribute("aria-pressed",o===b)});
+    render();
+  });
+});
+document.getElementById("dx").addEventListener("click",function(){dlg.close()});
+dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+dlg.addEventListener("close",function(){clearTimeout(tm)});
+render();
+
+/* skills */
+(function(){
+  var cnt={};P.forEach(function(p){p.t.forEach(function(s){cnt[s]=(cnt[s]||0)+1})});
+  var a=Object.keys(cnt).sort(function(u,v){return cnt[v]-cnt[u]}).slice(0,8),mx=cnt[a[0]],box=document.getElementById("sk");
+  box.innerHTML=a.map(function(s){return '<div><b>'+s+'</b><span class="bar"><span class="fill" data-w="'+(cnt[s]/mx*100)+'"></span></span><small>Used in '+cnt[s]+(cnt[s]===1?' project':' projects')+'</small></div>'}).join("");
+  var fs=box.querySelectorAll(".fill");
+  function go(){fs.forEach(function(f){f.style.width=f.getAttribute("data-w")+"%"})}
+  if(RM||!("IntersectionObserver" in window))go();
+  else new IntersectionObserver(function(en,o){if(en[0].isIntersecting){go();o.disconnect()}}).observe(box);
+})();
+
+/* copy email */
+document.getElementById("cp").addEventListener("click",function(){
+  var b=this;
+  try{navigator.clipboard.writeText("cpj.els2003@gmail.com").then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy email"},1500)},function(){b.textContent="cpj.els2003@gmail.com"})}
+  catch(e){b.textContent="cpj.els2003@gmail.com"}
+});
+</script>
+</body>
+</html>
